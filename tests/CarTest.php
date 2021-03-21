@@ -15,4 +15,14 @@ final class CarTest extends TestCase
         $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 13.4, 2);
         $this->assertInstanceOf(Car::class, $car);
     }
+
+    public function testCarHasPropertiesGetters()
+    {
+        $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 13.498, 2);
+
+        $this->assertTrue(method_exists($car, 'getColor'));
+        $this->assertTrue(method_exists($car, 'getMake'));
+        $this->assertTrue(method_exists($car, 'getFuelConsumption'));
+        $this->assertTrue(method_exists($car, 'getTankCapacity'));
+    }
 }

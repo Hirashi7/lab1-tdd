@@ -12,10 +12,10 @@ final class CarColors extends Enum
 
 final class CarMakes extends Enum
 {
-    const OPEL = 'opel';
-    const POLONEZ = 'polonez';
-    const FERRARI = 'ferrari';
-    const NISSAN = 'nissan';
+    private const OPEL = 'opel';
+    private const POLONEZ = 'polonez';
+    private const FERRARI = 'ferrari';
+    private const NISSAN = 'nissan';
 }
 
 final class Car
