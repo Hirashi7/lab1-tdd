@@ -89,7 +89,30 @@ final class Car
     public function drive(float $distanceInKilometers): void
     {
         $this->fuelLevel = $this->fuelLevel - ($this->fuelConsumption / 100 * $distanceInKilometers);
+
+        $this->updateOdometer($distanceInKilometers);
+        $this->updateDailyOdometer($distanceInKilometers);
+    }
+
+    private function updateOdometer(float $distanceInKilometers): void
+    {
+        $limit = 999999;
+
         $this->odometer += $distanceInKilometers;
+
+        while ($this->odometer > $limit) {
+            $this->odometer -= $limit;
+        }
+    }
+
+    private function updateDailyOdometer(float $distanceInKilometers): void
+    {
+        $limit = 999;
+
         $this->dailyOdometer += $distanceInKilometers;
+
+        while ($this->dailyOdometer > $limit) {
+            $this->dailyOdometer -= $limit;
+        }
     }
 }
