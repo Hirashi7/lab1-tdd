@@ -45,7 +45,7 @@ final class Car
 
     public function getFuelConsumption(): float
     {
-        return $this->fuelConsumption;
+        return round($this->fuelConsumption, 1);
     }
 
     public function getTankCapacity(): int
