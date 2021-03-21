@@ -83,4 +83,8 @@ final class Car
 
         $this->fuelLevel += $litres_of_fuel;
     }
+
+    public function drive(float $distanceInKilometers): void
+    {
+    }
 }
