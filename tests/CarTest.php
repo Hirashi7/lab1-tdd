@@ -12,7 +12,7 @@ final class CarTest extends TestCase
 {
     public function testCarCanBeCreated()
     {
-        $car = new Car('pink', 'Polonez', 13.4, 2);
+        $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 13.4, 2);
         $this->assertInstanceOf(Car::class, $car);
     }
 }
