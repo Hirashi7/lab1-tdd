@@ -71,6 +71,10 @@ final class Car
 
     public function refuel(float $litres_of_fuel): void
     {
+        if ($litres_of_fuel < 0) {
+            return;
+        }
+
         if ($this->fuelLevel + $litres_of_fuel > $this->tankCapacity) {
             $this->fuelLevel = $this->tankCapacity;
 
