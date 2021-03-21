@@ -78,4 +78,11 @@ final class CarTest extends TestCase
 
         $this->assertSame($car->getFuelLevel(), $oldfuelLevel);
     }
+
+    public function testCarCanDrive()
+    {
+        $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 13.498, 40);
+
+        $this->assertTrue(method_exists($car, 'drive'));
+    }
 }
