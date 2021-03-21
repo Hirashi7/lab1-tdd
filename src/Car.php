@@ -79,7 +79,7 @@ final class Car
             return;
         }
 
-        if ($this->fuelLevel + $litres_of_fuel > $this->tankCapacity) {
+        if (($this->fuelLevel + $litres_of_fuel) > $this->tankCapacity) {
             $this->fuelLevel = $this->tankCapacity;
 
             return;
@@ -90,7 +90,19 @@ final class Car
 
     public function drive(float $distanceInKilometers): void
     {
-        $this->fuelLevel = $this->fuelLevel - ($this->fuelConsumption / 100 * $distanceInKilometers);
+        $distanceFuelConsumption = $this->fuelConsumption / 100 * $distanceInKilometers;
+
+        if ($distanceFuelConsumption > $this->fuelLevel) {
+            $maxDistanceDrivedOnCurrentFuel = $this->fuelLevel / $this->fuelConsumption * 100;
+
+            $this->fuelLevel = 0;
+            $this->updateOdometer($maxDistanceDrivedOnCurrentFuel);
+            $this->updateDailyOdometer($maxDistanceDrivedOnCurrentFuel);
+
+            return;
+        }
+
+        $this->fuelLevel -= $distanceFuelConsumption;
 
         $this->updateOdometer($distanceInKilometers);
         $this->updateDailyOdometer($distanceInKilometers);

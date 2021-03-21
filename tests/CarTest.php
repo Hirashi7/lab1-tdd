@@ -92,11 +92,9 @@ final class CarTest extends TestCase
 
         $car->refuel(40);
 
-        $fuelLevel = $car->getFuelLevel();
-
         $car->drive(20);
 
-        $this->assertSame($car->getFuelLevel(), $fuelLevel - (10 / 100 * 20));
+        $this->assertSame($car->getFuelLevel(), 40 - (10 / 100 * 20));
     }
 
     public function testCarDriveIncreasesOdometers()
@@ -113,14 +111,14 @@ final class CarTest extends TestCase
 
     public function testCarOdometersHaveLimits()
     {
-        $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 10, 40);
+        $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 10, 200);
 
-        $car->refuel(40);
+        $car->refuel(200);
 
         $car->drive(2001005);
 
-        $this->assertSame(1007, $car->getOdometer());
-        $this->assertSame(8.0, $car->getDailyOdometer());
+        $this->assertSame(2000, $car->getOdometer());
+        $this->assertSame(2.0, $car->getDailyOdometer());
     }
 
     public function testCarCanDriveDistanceBasedOnFuelLevel()
