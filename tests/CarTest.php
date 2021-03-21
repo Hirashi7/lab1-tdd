@@ -56,4 +56,6 @@ final class CarTest extends TestCase
 
         $this->assertTrue(method_exists($car, 'refuel'));
     }
+
+    public funct
 }

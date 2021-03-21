@@ -67,4 +67,9 @@ final class Car
     {
         return 0;
     }
+
+    public function refuel(float $litres_of_fuel): void
+    {
+        $this->fuelLevel += $litres_of_fuel;
+    }
 }
