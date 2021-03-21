@@ -110,4 +110,16 @@ final class CarTest extends TestCase
         $this->assertTrue(20 == $car->getOdometer());
         $this->assertTrue(20 == $car->getDailyOdometer());
     }
+
+    public function testCarOdometersHaveLimits()
+    {
+        $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 10, 40);
+
+        $car->refuel(40);
+
+        $car->drive(1001005);
+
+        $this->assertSame($car->getOdometer(), 1005);
+        $this->assertSame($car->getDailyOdometer(), 5);
+    }
 }
