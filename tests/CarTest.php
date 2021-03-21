@@ -24,6 +24,9 @@ final class CarTest extends TestCase
         $this->assertTrue(method_exists($car, 'getMake'));
         $this->assertTrue(method_exists($car, 'getFuelConsumption'));
         $this->assertTrue(method_exists($car, 'getTankCapacity'));
+        $this->assertTrue(method_exists($car, 'getFuelLevel'));
+        $this->assertTrue(method_exists($car, 'getOdometer'));
+        $this->assertTrue(method_exists($car, 'getDailyOdometer'));
     }
 
     public function testCarHasValidPropertiesGetters()
@@ -34,5 +37,16 @@ final class CarTest extends TestCase
         $this->assertTrue($car->getMake() == CarMakes::POLONEZ(), 'Make getter is invalid');
         $this->assertTrue(13.5 === $car->getFuelConsumption(), 'Fuel consumption getter is invalid');
         $this->assertTrue(2 === $car->getTankCapacity(), 'Tank capacity getter is invalid');
+        $this->assertIsFloat($this->getFuelLevel(), 'Fuel level has wrong type');
+
+        // Odometer
+        $this->assertIsInt($this->getOdometer(), 'Odometer has wrong type');
+        $this->assertGreaterThanOrEqual(0, $this->getOdometer(), 'Odometer has wrong value');
+        $this->assertLessThan(1000000, $this->getOdometer(), 'Odometer has wrong type');
+
+        // Daily odometer
+        $this->assertIsFloat($this->getDailyOdometer(), 'Daily odometer has wrong type');
+        $this->assertGreaterThanOrEqual(0, $this->getDailyOdometer(), 'Daily odometer has wrong type');
+        $this->assertLessThan(1000, $this->getDailyOdometer(), 'Daily odometer has wrong type');
     }
 }
