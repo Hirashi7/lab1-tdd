@@ -57,5 +57,12 @@ final class CarTest extends TestCase
         $this->assertTrue(method_exists($car, 'refuel'));
     }
 
-    public funct
+    public function testCarRefuelValid()
+    {
+        $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 13.498, 40);
+
+        $car->refuel(200);
+
+        $this->assertGreaterThanOrEqual($car->getTankCapacity(), $car->getFuelLevel());
+    }
 }
