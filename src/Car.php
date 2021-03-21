@@ -32,4 +32,24 @@ final class Car
         $this->fuelConsumption = $fuelConsumption;
         $this->tankCapacity = $tankCapacity;
     }
+
+    public function getColor(): CarColors
+    {
+        return $this->color;
+    }
+
+    public function getMake(): CarMakes
+    {
+        return $this->make;
+    }
+
+    public function getFuelConsumption(): float
+    {
+        return $this->fuelConsumption;
+    }
+
+    public function getTankCapacity(): int
+    {
+        return $this->tankCapacity;
+    }
 }
