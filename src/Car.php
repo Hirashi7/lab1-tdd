@@ -25,6 +25,8 @@ final class Car
     private $fuelConsumption;
     private $tankCapacity;
     private $fuelLevel = 0;
+    private $odometer = 0;
+    private $dailyOdometer = 0;
 
     public function __construct(CarColors $color, CarMakes $make, float $fuelConsumption, int $tankCapacity)
     {
@@ -61,12 +63,12 @@ final class Car
 
     public function getOdometer(): int
     {
-        return 0;
+        return $this->odometer;
     }
 
     public function getDailyOdometer(): float
     {
-        return 0;
+        return $this->dailyOdometer;
     }
 
     public function refuel(float $litres_of_fuel): void
@@ -87,5 +89,7 @@ final class Car
     public function drive(float $distanceInKilometers): void
     {
         $this->fuelLevel = $this->fuelLevel - ($this->fuelConsumption / 100 * $distanceInKilometers);
+        $this->odometer += $distanceInKilometers;
+        $this->dailyOdometer += $distanceInKilometers;
     }
 }

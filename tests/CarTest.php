@@ -107,7 +107,7 @@ final class CarTest extends TestCase
 
         $car->drive(20);
 
-        $this->assertSame($car->getOdometer(), 20);
-        $this->assertSame($car->getDailyOdometer(), 20);
+        $this->assertTrue(20 == $car->getOdometer());
+        $this->assertTrue(20 == $car->getDailyOdometer());
     }
 }
