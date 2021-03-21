@@ -24,7 +24,7 @@ final class Car
     private $make;
     private $fuelConsumption;
     private $tankCapacity;
-    private $fuelLevel;
+    private $fuelLevel = 0;
 
     public function __construct(CarColors $color, CarMakes $make, float $fuelConsumption, int $tankCapacity)
     {
@@ -56,7 +56,7 @@ final class Car
 
     public function getFuelLevel(): float
     {
-        return 0;
+        return $this->fuelLevel;
     }
 
     public function getOdometer(): int
@@ -71,6 +71,12 @@ final class Car
 
     public function refuel(float $litres_of_fuel): void
     {
+        if ($this->fuelLevel + $litres_of_fuel > $this->tankCapacity) {
+            $this->fuelLevel = $this->tankCapacity;
+
+            return;
+        }
+
         $this->fuelLevel += $litres_of_fuel;
     }
 }
