@@ -26,7 +26,9 @@ final class Car
     private $tankCapacity;
     private $fuelLevel = 0;
     private $odometer = 0;
+    private $odometerLimit = 999999;
     private $dailyOdometer = 0;
+    private $dailyOdometerLimit = 999;
 
     public function __construct(CarColors $color, CarMakes $make, float $fuelConsumption, int $tankCapacity)
     {
@@ -96,23 +98,19 @@ final class Car
 
     private function updateOdometer(float $distanceInKilometers): void
     {
-        $limit = 999999;
-
         $this->odometer += $distanceInKilometers;
 
-        while ($this->odometer > $limit) {
-            $this->odometer -= $limit;
+        while ($this->odometer > $this->odometerLimit) {
+            $this->odometer -= $this->odometerLimit;
         }
     }
 
     private function updateDailyOdometer(float $distanceInKilometers): void
     {
-        $limit = 999;
-
         $this->dailyOdometer += $distanceInKilometers;
 
-        while ($this->dailyOdometer > $limit) {
-            $this->dailyOdometer -= $limit;
+        while ($this->dailyOdometer > $this->dailyOdometerLimit) {
+            $this->dailyOdometer -= $this->dailyOdometerLimit;
         }
     }
 }
