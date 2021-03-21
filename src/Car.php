@@ -86,5 +86,6 @@ final class Car
 
     public function drive(float $distanceInKilometers): void
     {
+        $this->fuelLevel = $this->fuelLevel - ($this->fuelConsumption / 100 * $distanceInKilometers);
     }
 }
