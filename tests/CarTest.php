@@ -61,8 +61,19 @@ final class CarTest extends TestCase
     {
         $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 13.498, 40);
 
-        $car->refuel(200);
+        $car->refuel(30);
 
-        $this->assertGreaterThanOrEqual($car->getTankCapacity(), $car->getFuelLevel());
+        $this->assertGreaterThanOrEqual(30, $car->getFuelLevel());
+
+        // $this->assertLessThanOrEqual($car->getFuelLevel(), $car->getTankCapacity());
     }
+
+    // public function testCarRefuelCannotBeNegative()
+    // {
+    //     $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 13.498, 40);
+
+    //     $car->refuel(-100);
+
+    //     $this->assertGreaterThanOrEqual($car->getFuelLevel(), 0);
+    // }
 }

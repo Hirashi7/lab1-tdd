@@ -24,6 +24,7 @@ final class Car
     private $make;
     private $fuelConsumption;
     private $tankCapacity;
+    private $fuelLevel;
 
     public function __construct(CarColors $color, CarMakes $make, float $fuelConsumption, int $tankCapacity)
     {
