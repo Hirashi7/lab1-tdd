@@ -49,4 +49,11 @@ final class CarTest extends TestCase
         $this->assertGreaterThanOrEqual(0, $car->getDailyOdometer(), 'Daily odometer has wrong type');
         $this->assertLessThan(1000, $car->getDailyOdometer(), 'Daily odometer has wrong type');
     }
+
+    public function testCarCanRefuel()
+    {
+        $car = new Car(CarColors::PINK(), CarMakes::POLONEZ(), 13.498, 40);
+
+        $this->assertTrue(method_exists($car, 'refuel'));
+    }
 }
