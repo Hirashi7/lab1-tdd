@@ -52,4 +52,19 @@ final class Car
     {
         return $this->tankCapacity;
     }
+
+    public function getFuelLevel(): float
+    {
+        return 0;
+    }
+
+    public function getOdometer(): int
+    {
+        return 0;
+    }
+
+    public function getDailyOdometer(): float
+    {
+        return 0;
+    }
 }
